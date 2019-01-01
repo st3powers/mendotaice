@@ -38,7 +38,7 @@ library("ggplot2")
 
 #install_github("dgrtwo/gganimate", force=TRUE)
 #install_github("thomasp85/gganimate/releases/tag/v0.1.1", force=TRUE)
-#library("gganimate")
+library("gganimate")
 
 ice<-read.csv("data.csv")
 names(ice)[4]<-"ice_duration"
