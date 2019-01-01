@@ -277,8 +277,13 @@ p2<-p1 +  transition_manual(x,cumulative=TRUE)
 #animate(p2, title_frame = FALSE,"ice.gif",
 #          ani.width= 400, ani.height=250)
 
-animate(p2, "ice2.gif")
+#p2<-animate(p2, "ice2.gif",nframes=length(unique(tweendataB$x)))
+#p2<-animate(p2, "ice2.gif",nframes=10,start_pause=1,end_pause = 1, rewind = TRUE)
+
+#animate(p2, "ice2.gif")
 #animate(p2, renderer = file_renderer('~/animation/'))[1:6]
-anim_save("ice2.gif", p2)
+#anim_save("ice2.gif", p2)
+
+anim_save("ice2.gif", p2,width=400,height=250)
 
 #magick::image_write(p2, path="myanimation.gif")
