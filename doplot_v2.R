@@ -263,7 +263,7 @@ tweendataB<-rbind(tweendata0,
                   tweendata41,tweendata42,tweendata43,tweendata44,tweendata45,
                   tweendata46,tweendata47,tweendata48,tweendata49,tweendata50)
 
-p1 <- ggplot(tweendataB, aes(x, y,frame=x,shape=event,color=ice_duration)) +
+p.magma <- ggplot(tweendataB, aes(x, y,frame=x,shape=event,color=ice_duration)) +
   geom_point(size=1.5)+
   scale_color_viridis(direction=-1,end=0.8,option="A")+
   ylim(-60,150)+
@@ -272,18 +272,41 @@ p1 <- ggplot(tweendataB, aes(x, y,frame=x,shape=event,color=ice_duration)) +
   scale_y_continuous(breaks = scales::pretty_breaks(n = 8))+
   theme_bw()#
 
-p2<-p1 +  transition_manual(x,cumulative=TRUE)
+p.cume.magma<-p.magma +  transition_manual(x,cumulative=TRUE)
 
-#animate(p2, title_frame = FALSE,"ice.gif",
-#          ani.width= 400, ani.height=250)
+tweendataB$ice_duration2<-tweendataB$ice_duration
+tweendataB$ice_duration2[which(tweendataB$ice_duration2<=60)]<-60
 
-#p2<-animate(p2, "ice2.gif",nframes=length(unique(tweendataB$x)))
-#p2<-animate(p2, "ice2.gif",nframes=10,start_pause=1,end_pause = 1, rewind = TRUE)
+p1 <- ggplot(tweendataB, aes(x, y,frame=x,shape=event,color=ice_duration)) +
+  geom_point(size=1.5)+
+  ylim(-60,150)+
+  xlab("Year")+ylab("Days since January 1st")+
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 9))+
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 8))+
+  theme_bw()#
 
-#animate(p2, "ice2.gif")
-#animate(p2, renderer = file_renderer('~/animation/'))[1:6]
-#anim_save("ice2.gif", p2)
+p2 <- ggplot(tweendataB, aes(x, y,frame=x,shape=event,color=ice_duration2)) +
+  geom_point(size=1.5)+
+  ylim(-60,150)+
+  xlab("Year")+ylab("Days since January 1st")+
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 9))+
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 8))+
+  theme_bw()#
 
-anim_save("ice2.gif", p2,width=400,height=250)
+p.magma<-p1 +  transition_manual(x,cumulative=TRUE)+scale_color_viridis(direction=-1,end=0.8,option="A")
+#p.viridis<-p1 +  transition_manual(x,cumulative=TRUE)+scale_color_viridis(direction=-1,end=0.95,option="D")
+#p.viridis<-p1 +  transition_manual(x,cumulative=TRUE)+scale_color_viridis(direction=-1,begin=0.2,end=1,option="D")
+#p.viridis<-p2 +  transition_manual(x,cumulative=TRUE)+scale_color_viridis(direction=-1,end=0.95,option="D")
+p.viridis<-p2 +  transition_manual(x,cumulative=TRUE)+scale_color_viridis(direction=-1,option="D")
+
+#p.viridis<-p1 +  transition_manual(x,cumulative=TRUE)+scale_color_viridis(direction=-1,low,option="D")
+#p.viridis<-p1 +  transition_manual(x,cumulative=TRUE)+scale_color_gradient2(low="yellow",mid="green",high="blue")
+#p.viridis<-p1 +  transition_manual(x,cumulative=TRUE)+scale_color_gradient(low="yellow",high="purple")
+
+
+anim_save("ice.magma.gif", p.magma,width=400,height=250)
+anim_save("ice.viridis.gif", p.viridis,width=400,height=250)
+
+
 
 #magick::image_write(p2, path="myanimation.gif")
