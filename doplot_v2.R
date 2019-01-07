@@ -19,25 +19,20 @@ usePackage <- function(p)
 }
 
 #packages needed
-packagesCRAN<-c("plyr","dplyr","devtools","reshape","tidyr","ggthemes","RColorBrewer","scales","tweenr",
-                "tidyverse","forcats","lubridate","viridis","gifski","png")
+packagesCRAN<-c("plyr","dplyr","devtools","reshape","tidyr","ggthemes","RColorBrewer","scales",
+                "tidyverse","lubridate","viridis","png")
+
+#packagesCRAN<-c("plyr","dplyr","devtools","reshape","tidyr","ggthemes","RColorBrewer","scales",
+#                "tidyverse","forcats","lubridate","viridis","gifski","png")
 
 #iterate usePackage function across package names
 lapply(packagesCRAN,FUN=usePackage)
 
 #additional finicky packages, handle separately
 
-#install_github("tidyverse/ggplot2",force=TRUE)
 library("ggplot2")
 
-#install_github("dkahle/ggmap", force=TRUE)
-#library("ggmap")
-
-#install_github("hrbrmstr/ggalt", force=TRUE)
-#library("ggalt")
-
 #install_github("dgrtwo/gganimate", force=TRUE)
-#install_github("thomasp85/gganimate/releases/tag/v0.1.1", force=TRUE)
 library("gganimate")
 
 ice<-read.csv("data.csv")
@@ -141,129 +136,129 @@ rbind.end<-rbind.end[order(rbind.end$z,rbind.end$z,decreasing=TRUE),]
 n.approx<-100
 
 df<-rbind
-tweendata<-df
-tweendata$txt<-as.character(tweendata$txt)
+plotdata<-df
+plotdata$txt<-as.character(plotdata$txt)
 
-tweendata<-tweendata[order(tweendata$txt,tweendata$z),]
-#tweendata$colour[which(tweendata$x==0)]<-""
-tweendata$colour<-as.numeric(tweendata$txt2)
+plotdata<-plotdata[order(plotdata$txt,plotdata$z),]
+#plotdata$colour[which(plotdata$x==0)]<-""
+plotdata$colour<-as.numeric(plotdata$txt2)
 
-#tweendata0<-subset(tweendata,tweendata$year>=2000)
-tweendata0<-tweendata
-tweendata1<-subset(tweendata,tweendata$year>=2018)
-tweendata2<-subset(tweendata,tweendata$year>=2018)
-tweendata3<-subset(tweendata,tweendata$year>=2018)
-tweendata4<-subset(tweendata,tweendata$year>=2018)
-tweendata5<-subset(tweendata,tweendata$year>=2018)
-tweendata6<-subset(tweendata,tweendata$year>=2018)
-tweendata7<-subset(tweendata,tweendata$year>=2018)
-tweendata8<-subset(tweendata,tweendata$year>=2018)
-tweendata9<-subset(tweendata,tweendata$year>=2018)
-tweendata10<-subset(tweendata,tweendata$year>=2018)
-tweendata11<-subset(tweendata,tweendata$year>=2018)
-tweendata12<-subset(tweendata,tweendata$year>=2018)
-tweendata13<-subset(tweendata,tweendata$year>=2018)
-tweendata14<-subset(tweendata,tweendata$year>=2018)
-tweendata15<-subset(tweendata,tweendata$year>=2018)
-tweendata16<-subset(tweendata,tweendata$year>=2018)
-tweendata17<-subset(tweendata,tweendata$year>=2018)
-tweendata18<-subset(tweendata,tweendata$year>=2018)
-tweendata19<-subset(tweendata,tweendata$year>=2018)
-tweendata20<-subset(tweendata,tweendata$year>=2018)
-tweendata21<-subset(tweendata,tweendata$year>=2018)
-tweendata22<-subset(tweendata,tweendata$year>=2018)
-tweendata23<-subset(tweendata,tweendata$year>=2018)
-tweendata24<-subset(tweendata,tweendata$year>=2018)
-tweendata25<-subset(tweendata,tweendata$year>=2018)
-tweendata26<-subset(tweendata,tweendata$year>=2018)
-tweendata27<-subset(tweendata,tweendata$year>=2018)
-tweendata28<-subset(tweendata,tweendata$year>=2018)
-tweendata29<-subset(tweendata,tweendata$year>=2018)
-tweendata30<-subset(tweendata,tweendata$year>=2018)
-tweendata31<-subset(tweendata,tweendata$year>=2018)
-tweendata32<-subset(tweendata,tweendata$year>=2018)
-tweendata33<-subset(tweendata,tweendata$year>=2018)
-tweendata34<-subset(tweendata,tweendata$year>=2018)
-tweendata35<-subset(tweendata,tweendata$year>=2018)
-tweendata36<-subset(tweendata,tweendata$year>=2018)
-tweendata37<-subset(tweendata,tweendata$year>=2018)
-tweendata38<-subset(tweendata,tweendata$year>=2018)
-tweendata39<-subset(tweendata,tweendata$year>=2018)
-tweendata40<-subset(tweendata,tweendata$year>=2018)
-tweendata41<-subset(tweendata,tweendata$year>=2018)
-tweendata42<-subset(tweendata,tweendata$year>=2018)
-tweendata43<-subset(tweendata,tweendata$year>=2018)
-tweendata44<-subset(tweendata,tweendata$year>=2018)
-tweendata45<-subset(tweendata,tweendata$year>=2018)
-tweendata46<-subset(tweendata,tweendata$year>=2018)
-tweendata47<-subset(tweendata,tweendata$year>=2018)
-tweendata48<-subset(tweendata,tweendata$year>=2018)
-tweendata49<-subset(tweendata,tweendata$year>=2018)
-tweendata50<-subset(tweendata,tweendata$year>=2018)
+#plotdata0<-subset(plotdata,plotdata$year>=2000)
+plotdata0<-plotdata
+plotdata1<-subset(plotdata,plotdata$year>=2018)
+plotdata2<-subset(plotdata,plotdata$year>=2018)
+plotdata3<-subset(plotdata,plotdata$year>=2018)
+plotdata4<-subset(plotdata,plotdata$year>=2018)
+plotdata5<-subset(plotdata,plotdata$year>=2018)
+plotdata6<-subset(plotdata,plotdata$year>=2018)
+plotdata7<-subset(plotdata,plotdata$year>=2018)
+plotdata8<-subset(plotdata,plotdata$year>=2018)
+plotdata9<-subset(plotdata,plotdata$year>=2018)
+plotdata10<-subset(plotdata,plotdata$year>=2018)
+plotdata11<-subset(plotdata,plotdata$year>=2018)
+plotdata12<-subset(plotdata,plotdata$year>=2018)
+plotdata13<-subset(plotdata,plotdata$year>=2018)
+plotdata14<-subset(plotdata,plotdata$year>=2018)
+plotdata15<-subset(plotdata,plotdata$year>=2018)
+plotdata16<-subset(plotdata,plotdata$year>=2018)
+plotdata17<-subset(plotdata,plotdata$year>=2018)
+plotdata18<-subset(plotdata,plotdata$year>=2018)
+plotdata19<-subset(plotdata,plotdata$year>=2018)
+plotdata20<-subset(plotdata,plotdata$year>=2018)
+plotdata21<-subset(plotdata,plotdata$year>=2018)
+plotdata22<-subset(plotdata,plotdata$year>=2018)
+plotdata23<-subset(plotdata,plotdata$year>=2018)
+plotdata24<-subset(plotdata,plotdata$year>=2018)
+plotdata25<-subset(plotdata,plotdata$year>=2018)
+plotdata26<-subset(plotdata,plotdata$year>=2018)
+plotdata27<-subset(plotdata,plotdata$year>=2018)
+plotdata28<-subset(plotdata,plotdata$year>=2018)
+plotdata29<-subset(plotdata,plotdata$year>=2018)
+plotdata30<-subset(plotdata,plotdata$year>=2018)
+plotdata31<-subset(plotdata,plotdata$year>=2018)
+plotdata32<-subset(plotdata,plotdata$year>=2018)
+plotdata33<-subset(plotdata,plotdata$year>=2018)
+plotdata34<-subset(plotdata,plotdata$year>=2018)
+plotdata35<-subset(plotdata,plotdata$year>=2018)
+plotdata36<-subset(plotdata,plotdata$year>=2018)
+plotdata37<-subset(plotdata,plotdata$year>=2018)
+plotdata38<-subset(plotdata,plotdata$year>=2018)
+plotdata39<-subset(plotdata,plotdata$year>=2018)
+plotdata40<-subset(plotdata,plotdata$year>=2018)
+plotdata41<-subset(plotdata,plotdata$year>=2018)
+plotdata42<-subset(plotdata,plotdata$year>=2018)
+plotdata43<-subset(plotdata,plotdata$year>=2018)
+plotdata44<-subset(plotdata,plotdata$year>=2018)
+plotdata45<-subset(plotdata,plotdata$year>=2018)
+plotdata46<-subset(plotdata,plotdata$year>=2018)
+plotdata47<-subset(plotdata,plotdata$year>=2018)
+plotdata48<-subset(plotdata,plotdata$year>=2018)
+plotdata49<-subset(plotdata,plotdata$year>=2018)
+plotdata50<-subset(plotdata,plotdata$year>=2018)
 
-tweendata1$x<-2018.001
-tweendata2$x<-2018.002
-tweendata3$x<-2018.003
-tweendata4$x<-2018.004
-tweendata5$x<-2018.005
-tweendata6$x<-2018.006
-tweendata7$x<-2018.007
-tweendata8$x<-2018.008
-tweendata9$x<-2018.009
-tweendata10$x<-2018.010
-tweendata11$x<-2018.011
-tweendata12$x<-2018.012
-tweendata13$x<-2018.013
-tweendata14$x<-2018.014
-tweendata15$x<-2018.015
-tweendata16$x<-2018.016
-tweendata17$x<-2018.017
-tweendata18$x<-2018.018
-tweendata19$x<-2018.019
-tweendata20$x<-2018.020
-tweendata21$x<-2018.021
-tweendata22$x<-2018.022
-tweendata23$x<-2018.023
-tweendata24$x<-2018.024
-tweendata25$x<-2018.025
-tweendata26$x<-2018.026
-tweendata27$x<-2018.027
-tweendata28$x<-2018.028
-tweendata29$x<-2018.029
-tweendata30$x<-2018.030
-tweendata31$x<-2018.031
-tweendata32$x<-2018.032
-tweendata33$x<-2018.033
-tweendata34$x<-2018.034
-tweendata35$x<-2018.035
-tweendata36$x<-2018.036
-tweendata37$x<-2018.037
-tweendata38$x<-2018.038
-tweendata39$x<-2018.039
-tweendata40$x<-2018.040
-tweendata41$x<-2018.041
-tweendata42$x<-2018.042
-tweendata43$x<-2018.043
-tweendata44$x<-2018.044
-tweendata45$x<-2018.045
-tweendata46$x<-2018.046
-tweendata47$x<-2018.047
-tweendata48$x<-2018.048
-tweendata49$x<-2018.049
-tweendata50$x<-2018.050
-tweendataB<-rbind(tweendata0,
-                  tweendata1,tweendata2,tweendata3,tweendata4,tweendata5,
-                  tweendata6,tweendata7,tweendata8,tweendata9,tweendata10,
-                  tweendata11,tweendata12,tweendata13,tweendata14,tweendata15,
-                  tweendata16,tweendata17,tweendata18,tweendata19,tweendata20,
-                  tweendata21,tweendata22,tweendata23,tweendata24,tweendata25,
-                  tweendata26,tweendata27,tweendata28,tweendata29,tweendata30,
-                  tweendata31,tweendata32,tweendata33,tweendata34,tweendata35,
-                  tweendata36,tweendata37,tweendata38,tweendata39,tweendata30,
-                  tweendata41,tweendata42,tweendata43,tweendata44,tweendata45,
-                  tweendata46,tweendata47,tweendata48,tweendata49,tweendata50)
+plotdata1$x<-2018.001
+plotdata2$x<-2018.002
+plotdata3$x<-2018.003
+plotdata4$x<-2018.004
+plotdata5$x<-2018.005
+plotdata6$x<-2018.006
+plotdata7$x<-2018.007
+plotdata8$x<-2018.008
+plotdata9$x<-2018.009
+plotdata10$x<-2018.010
+plotdata11$x<-2018.011
+plotdata12$x<-2018.012
+plotdata13$x<-2018.013
+plotdata14$x<-2018.014
+plotdata15$x<-2018.015
+plotdata16$x<-2018.016
+plotdata17$x<-2018.017
+plotdata18$x<-2018.018
+plotdata19$x<-2018.019
+plotdata20$x<-2018.020
+plotdata21$x<-2018.021
+plotdata22$x<-2018.022
+plotdata23$x<-2018.023
+plotdata24$x<-2018.024
+plotdata25$x<-2018.025
+plotdata26$x<-2018.026
+plotdata27$x<-2018.027
+plotdata28$x<-2018.028
+plotdata29$x<-2018.029
+plotdata30$x<-2018.030
+plotdata31$x<-2018.031
+plotdata32$x<-2018.032
+plotdata33$x<-2018.033
+plotdata34$x<-2018.034
+plotdata35$x<-2018.035
+plotdata36$x<-2018.036
+plotdata37$x<-2018.037
+plotdata38$x<-2018.038
+plotdata39$x<-2018.039
+plotdata40$x<-2018.040
+plotdata41$x<-2018.041
+plotdata42$x<-2018.042
+plotdata43$x<-2018.043
+plotdata44$x<-2018.044
+plotdata45$x<-2018.045
+plotdata46$x<-2018.046
+plotdata47$x<-2018.047
+plotdata48$x<-2018.048
+plotdata49$x<-2018.049
+plotdata50$x<-2018.050
+plotdataB<-rbind(plotdata0,
+                  plotdata1,plotdata2,plotdata3,plotdata4,plotdata5,
+                  plotdata6,plotdata7,plotdata8,plotdata9,plotdata10,
+                  plotdata11,plotdata12,plotdata13,plotdata14,plotdata15,
+                  plotdata16,plotdata17,plotdata18,plotdata19,plotdata20,
+                  plotdata21,plotdata22,plotdata23,plotdata24,plotdata25,
+                  plotdata26,plotdata27,plotdata28,plotdata29,plotdata30,
+                  plotdata31,plotdata32,plotdata33,plotdata34,plotdata35,
+                  plotdata36,plotdata37,plotdata38,plotdata39,plotdata30,
+                  plotdata41,plotdata42,plotdata43,plotdata44,plotdata45,
+                  plotdata46,plotdata47,plotdata48,plotdata49,plotdata50)
 
-p.magma <- ggplot(tweendataB, aes(x, y,frame=x,shape=event,color=ice_duration)) +
+p.magma <- ggplot(plotdataB, aes(x, y,frame=x,shape=event,color=ice_duration)) +
   geom_point(size=1.5)+
   scale_color_viridis(direction=-1,end=0.8,option="A")+
   ylim(-60,150)+
@@ -274,10 +269,10 @@ p.magma <- ggplot(tweendataB, aes(x, y,frame=x,shape=event,color=ice_duration)) 
 
 p.cume.magma<-p.magma +  transition_manual(x,cumulative=TRUE)
 
-tweendataB$ice_duration2<-tweendataB$ice_duration
-tweendataB$ice_duration2[which(tweendataB$ice_duration2<=60)]<-60
+plotdataB$ice_duration2<-plotdataB$ice_duration
+plotdataB$ice_duration2[which(plotdataB$ice_duration2<=60)]<-60
 
-p1 <- ggplot(tweendataB, aes(x, y,frame=x,shape=event,color=ice_duration)) +
+p1 <- ggplot(plotdataB, aes(x, y,frame=x,shape=event,color=ice_duration)) +
   geom_point(size=1.5)+
   ylim(-60,150)+
   xlab("Year")+ylab("Days since January 1st")+
@@ -285,7 +280,7 @@ p1 <- ggplot(tweendataB, aes(x, y,frame=x,shape=event,color=ice_duration)) +
   scale_y_continuous(breaks = scales::pretty_breaks(n = 8))+
   theme_bw()#
 
-p2 <- ggplot(tweendataB, aes(x, y,frame=x,shape=event,color=ice_duration2)) +
+p2 <- ggplot(plotdataB, aes(x, y,frame=x,shape=event,color=ice_duration2)) +
   geom_point(size=1.5)+
   ylim(-60,150)+
   xlab("Year")+ylab("Days since January 1st")+
