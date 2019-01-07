@@ -3,7 +3,6 @@
 rm(list = ls()) 
 graphics.off()
 
-# ==================
 # Set WD as needed by your machine
 base_dir<-getwd()
 setwd(base_dir)
@@ -17,7 +16,6 @@ usePackage <- function(p)
   require(p, character.only = TRUE)
 }
 
-# ==================
 # packages to install & load
 packagesCRAN<-c("ggplot2","plyr","dplyr","devtools","reshape","tidyr","ggthemes","RColorBrewer","scales",
                 "tidyverse","lubridate","viridis","png")
@@ -68,11 +66,12 @@ ice2$txt<-as.character(ice2$txt)
 ice2<-ice2[order(ice2$txt,ice2$z),]
 ice2$colour<-as.numeric(ice2$txt2)
 
+plotdata<- ice2
+
 # ==================
 # workaround to set up the 'pause effect' after last plotted point
 # because use of end_pause argument (gganimate) produced this error... Error: Additional frame variables must have the same length as the number of frames
 
-plotdata<- ice2
 pause.year<-2018
 pausedata<-subset(plotdata,plotdata$year>=pause.year) # datapoints to pause on
 pause.n<-100 # length of the pause (# of frames)
@@ -104,7 +103,7 @@ p1 <- ggplot(plotdata.pause, aes(x, y,frame=x,shape=event,color=ice_duration)) +
   xlab("Year")+ylab("Days since January 1st")+
   scale_x_continuous(breaks = scales::pretty_breaks(n = 9))+
   scale_y_continuous(breaks = scales::pretty_breaks(n = 8))+
-  theme_bw()#
+  theme_bw()+labs(color = "ice duration (d)")
 
 # do plot version 2- plots more points with warmer colors (best for 'viridis' color scheme?)
 p2 <- ggplot(plotdata.pause, aes(x, y,frame=x,shape=event,color=ice_duration2)) +
@@ -113,7 +112,7 @@ p2 <- ggplot(plotdata.pause, aes(x, y,frame=x,shape=event,color=ice_duration2)) 
   xlab("Year")+ylab("Days since January 1st")+
   scale_x_continuous(breaks = scales::pretty_breaks(n = 9))+
   scale_y_continuous(breaks = scales::pretty_breaks(n = 8))+
-  theme_bw()#
+  theme_bw()+labs(color = "ice duration (d)")
 
 p.magma<-p1 +  transition_manual(x,cumulative=TRUE)+scale_color_viridis(direction=-1,end=0.8,option="A")
 p.viridis<-p2 +  transition_manual(x,cumulative=TRUE)+scale_color_viridis(direction=-1,option="D")
