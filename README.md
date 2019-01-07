@@ -1,4 +1,5 @@
 mendotaice by st3powers
+
 makes animated plots (.gif) of Mendota lake ice history record
 doplot_v3.R worked on st3powers notebook on 2019/01/06, R 3.5.2 "Eggshell Igloo" for Moc OS X (released on 2018/12/20)
 !! Note: ggplot animation functions may produce errors in R 3.4 or earlier (see updated documentation for ggplot2 and gganimate packages) !!
