@@ -10,7 +10,7 @@ In a nutshell...
 
    use doplot_vX.R to generate animated plots from icedata.csv 
    
-   icedata.csv was derived from github user jzwart's version of raw_data.xlsx (downloaded 4 Dec 2018)
+   icedata.csv was derived from github user jzwart's version of raw_data.xlsx (downloaded 29 Dec 2018)
    
    link to raw_data.xlsx https://github.com/jzwart/mendota_ice/blob/master/1_data/in/raw_data.xlsx
    
