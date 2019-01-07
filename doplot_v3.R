@@ -4,8 +4,8 @@ rm(list = ls())
 graphics.off()
 
 # Set WD as needed by your machine
-base_dir<-getwd()
-setwd(base_dir)
+#base_dir<-getwd()
+#setwd(base_dir)
 
 # ==================
 # function for installing & loading packages (installs only if not already installed)
