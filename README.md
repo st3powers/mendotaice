@@ -9,8 +9,10 @@ doplot_v3.R worked on st3powers notebook on 2019/01/06, R 3.5.2 "Eggshell Igloo"
 In a nutshell...
 
    use doplot_vX.R to generate animated plots from icedata.csv 
+   
    icedata.csv was derived from github user jzwart's version of raw_data.xlsx (downloaded 4 Dec 2018)
+   
    link to raw_data.xlsx https://github.com/jzwart/mendota_ice/blob/master/1_data/in/raw_data.xlsx
-
+   
 for other visualizations of Mendota ice data, see below
 https://www.reddit.com/r/dataisbeautiful/comments/a2p5f0/battle_dataviz_battle_for_the_month_of_december/?st=JP8OMOKZ&sh=42466127
