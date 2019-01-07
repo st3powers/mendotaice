@@ -57,51 +57,25 @@ ice2$doy[which(monthstr=="Mar")]<-dayofmo[which(monthstr=="Mar")]+31+28
 ice2$doy[which(monthstr=="Apr")]<-dayofmo[which(monthstr=="Apr")]+31+28+31
 ice2$doy[which(monthstr=="May")]<-dayofmo[which(monthstr=="May")]+31+28+31+30
 
-##############################
-datax<-ice2
-datax$z<-datax$year
-datax$x<-datax$year
-#datax$y<-datax$DAYS
-datax$y<-datax$doy
-datax$txt<-datax$year
-datax$txt2<-datax$ice_duration
+ice2$x<-ice2$year
+ice2$y<-ice2$doy
+ice2$z<-ice2$year
+ice2$txt<-ice2$year
+ice2$txt2<-ice2$ice_duration
+ice2<-unique(ice2)
+ice2<-ice2[order(ice2$z),]
+ice2$txt<-as.character(ice2$txt)
+ice2<-ice2[order(ice2$txt,ice2$z),]
+ice2$colour<-as.numeric(ice2$txt2)
 
-for(i in 1:length(unique(datax$z))) {
-  yeari<-unique(datax$z)[i]
-  namei<-paste("datax.",yeari,sep="")
-  data.i<-subset(datax,datax$z==yeari)
-  assign(namei,data.i)
-}
-
-things<-ls()[grep("datax.*",ls())] # list of datax objects
-
-# combine datax objects
-for(i in 1:length(things)){
-  datai<-get(things[i])
-  if(i==1){data.out<-datai}
-  if(i>1){data.out<-rbind(data.out,datai)}
-}
-rbind<-data.out
-rbind<-datax
-
-rbind<-unique(rbind)
-rbind<-rbind[order(rbind$z),]
-#rbind.end<-rbind.end[order(rbind.end$z,rbind.end$z,decreasing=TRUE),]
-
-#n.approx<-100
-
-df<-rbind
-plotdata<-df
-plotdata$txt<-as.character(plotdata$txt)
-
-plotdata<-plotdata[order(plotdata$txt,plotdata$z),]
-plotdata$colour<-as.numeric(plotdata$txt2)
-
-# workaround to create the 'pause effect' after last plotted point
+# ==================
+# workaround to set up the 'pause effect' after last plotted point
 # because use of end_pause argument (gganimate) produced this error... Error: Additional frame variables must have the same length as the number of frames
-pausedata<-subset(plotdata,plotdata$year>=2018)
-pause.n<-100
+
+plotdata<- ice2
 pause.year<-2018
+pausedata<-subset(plotdata,plotdata$year>=pause.year) # datapoints to pause on
+pause.n<-100 # length of the pause (# of frames)
 for (i in 1:pause.n){
   print(i)
   namei<-paste("pausedata",pause.n,sep="")
@@ -110,14 +84,20 @@ for (i in 1:pause.n){
   pausedata.i$x<-xi
   if(i==1){pausedataX<-pausedata.i}
   if(i>1){pausedataX<-rbind(pausedataX,pausedata.i)}  
-#  assign(pausedata.i,namei)  
 }
 
-plotdata.pause<-rbind(plotdata,pausedataX)
+plotdata.pause<-rbind(plotdata,pausedataX) # combined data frame of plotdata + pausedata
 
+# workaround to plot more points with warmer colors
+# because 'viridis' package appears to have limited scaling options (?)
+min.icedays<-60
 plotdata.pause$ice_duration2<-plotdata.pause$ice_duration
-plotdata.pause$ice_duration2[which(plotdata.pause$ice_duration2<=60)]<-60
+plotdata.pause$ice_duration2[which(plotdata.pause$ice_duration2<=min.icedays)]<-min.icedays
 
+# ==================
+# do plots
+
+# do plot version 1- original ice duration (best for 'magma' color scheme ?)
 p1 <- ggplot(plotdata.pause, aes(x, y,frame=x,shape=event,color=ice_duration)) +
   geom_point(size=1.5)+
   ylim(-60,150)+
@@ -126,6 +106,7 @@ p1 <- ggplot(plotdata.pause, aes(x, y,frame=x,shape=event,color=ice_duration)) +
   scale_y_continuous(breaks = scales::pretty_breaks(n = 8))+
   theme_bw()#
 
+# do plot version 2- plots more points with warmer colors (best for 'viridis' color scheme?)
 p2 <- ggplot(plotdata.pause, aes(x, y,frame=x,shape=event,color=ice_duration2)) +
   geom_point(size=1.5)+
   ylim(-60,150)+
